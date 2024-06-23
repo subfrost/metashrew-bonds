@@ -13,7 +13,8 @@
     "prettier:assemblyscript": "prettier --write ./assembly/**/*.ts",
     "prettier:ts": "prettier --write ./src.ts/**/*.ts",
     "prettier": "npm-run-all prettier:assemblyscript",
-    "test": "ts-mocha --timeout 0 ./tests/**.spec.ts"
+    "test": "ts-mocha --timeout 0 ./tests/**.spec.ts",
+    "clean": "rm -rf build/ lib/ assembly/proto/metashrew-runes.ts src.ts/proto/metashrew-runes.ts"
   },
   "dependencies": {
     "@protobuf-ts/runtime": "^2.9.4"
