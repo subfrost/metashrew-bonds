@@ -59,3 +59,17 @@ message WalletResponse {
 message RunesResponse {
   repeated Rune runes = 1;
 }
+
+message MultisigReceivedAmount {
+  bytes senderAddress = 1;
+  bytes amount = 2;
+}
+
+message MultisigReceivedReceiptItem {
+  RuneId runeId = 1;
+  repeated MultisigReceivedAmount amounts = 2;
+}
+
+message MultisigReceivedReceipt {
+  repeated MultisigReceivedReceiptItem data = 1;
+}

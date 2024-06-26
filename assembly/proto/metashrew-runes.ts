@@ -252,7 +252,7 @@ namespace __proto {
         // Something went beyond our capability to understand
         default:
           throw new Error(
-            `Invalid wire type ${wireType} at offset ${this.pos}`,
+            `Invalid wire type ${wireType} at offset ${this.pos}`
           );
       }
     }
@@ -408,22 +408,22 @@ namespace __proto {
       return value < 128
         ? 1 // 2^7
         : value < 16384
-          ? 2 // 2^14
-          : value < 2097152
-            ? 3 // 2^21
-            : value < 268435456
-              ? 4 // 2^28
-              : value < 34359738368
-                ? 5 // 2^35
-                : value < 4398046511104
-                  ? 6 // 2^42
-                  : value < 562949953421312
-                    ? 7 // 2^49
-                    : value < 72057594037927936
-                      ? 8 // 2^56
-                      : value < 9223372036854775808
-                        ? 9 // 2^63
-                        : 10;
+        ? 2 // 2^14
+        : value < 2097152
+        ? 3 // 2^21
+        : value < 268435456
+        ? 4 // 2^28
+        : value < 34359738368
+        ? 5 // 2^35
+        : value < 4398046511104
+        ? 6 // 2^42
+        : value < 562949953421312
+        ? 7 // 2^49
+        : value < 72057594037927936
+        ? 8 // 2^56
+        : value < 9223372036854775808
+        ? 9 // 2^63
+        : 10;
     }
 
     @inline
@@ -516,13 +516,13 @@ export namespace metashrew_runes {
     // Encodes RuneId to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes RuneId to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -567,8 +567,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -628,13 +628,13 @@ export namespace metashrew_runes {
     // Encodes Rune to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes Rune to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -697,8 +697,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -742,13 +742,13 @@ export namespace metashrew_runes {
     // Encodes BalanceSheetItem to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes BalanceSheetItem to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -799,9 +799,9 @@ export namespace metashrew_runes {
                 new DataView(
                   decoder.view.buffer,
                   decoder.pos + decoder.view.byteOffset,
-                  length,
-                ),
-              ),
+                  length
+                )
+              )
             );
             decoder.skip(length);
 
@@ -833,13 +833,13 @@ export namespace metashrew_runes {
     // Encodes BalanceSheet to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes BalanceSheet to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -908,13 +908,13 @@ export namespace metashrew_runes {
     // Encodes Outpoint to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes Outpoint to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -983,13 +983,13 @@ export namespace metashrew_runes {
     // Encodes Output to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes Output to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1035,8 +1035,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -1048,8 +1048,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -1061,8 +1061,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -1124,13 +1124,13 @@ export namespace metashrew_runes {
     // Encodes OutpointResponse to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes OutpointResponse to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1231,13 +1231,13 @@ export namespace metashrew_runes {
     // Encodes PaginationInput to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes PaginationInput to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1299,13 +1299,13 @@ export namespace metashrew_runes {
     // Encodes WalletRequest to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes WalletRequest to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1345,9 +1345,9 @@ export namespace metashrew_runes {
                 new DataView(
                   decoder.view.buffer,
                   decoder.pos + decoder.view.byteOffset,
-                  length,
-                ),
-              ),
+                  length
+                )
+              )
             );
             decoder.skip(length);
 
@@ -1359,8 +1359,8 @@ export namespace metashrew_runes {
               new DataView(
                 decoder.view.buffer,
                 decoder.pos + decoder.view.byteOffset,
-                length,
-              ),
+                length
+              )
             );
             decoder.skip(length);
 
@@ -1401,13 +1401,13 @@ export namespace metashrew_runes {
     // Encodes WalletResponse to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes WalletResponse to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1462,9 +1462,9 @@ export namespace metashrew_runes {
                 new DataView(
                   decoder.view.buffer,
                   decoder.pos + decoder.view.byteOffset,
-                  length,
-                ),
-              ),
+                  length
+                )
+              )
             );
             decoder.skip(length);
 
@@ -1496,13 +1496,13 @@ export namespace metashrew_runes {
     // Encodes RunesResponse to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
-        StaticArray.fromArray<u8>(this.encodeU8Array()),
+        StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
     // Encodes RunesResponse to the Array<u8>
     encodeU8Array(
-      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>()),
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
@@ -1519,4 +1519,288 @@ export namespace metashrew_runes {
       return buf;
     } // encode RunesResponse
   } // RunesResponse
+
+  export class MultisigReceivedAmount {
+    public senderAddress: Array<u8> = new Array<u8>();
+    public amount: Array<u8> = new Array<u8>();
+
+    // Decodes MultisigReceivedAmount from an ArrayBuffer
+    static decode(buf: ArrayBuffer): MultisigReceivedAmount {
+      return MultisigReceivedAmount.decodeDataView(new DataView(buf));
+    }
+
+    // Decodes MultisigReceivedAmount from a DataView
+    static decodeDataView(view: DataView): MultisigReceivedAmount {
+      const decoder = new __proto.Decoder(view);
+      const obj = new MultisigReceivedAmount();
+
+      while (!decoder.eof()) {
+        const tag = decoder.tag();
+        const number = tag >>> 3;
+
+        switch (number) {
+          case 1: {
+            obj.senderAddress = decoder.bytes();
+            break;
+          }
+          case 2: {
+            obj.amount = decoder.bytes();
+            break;
+          }
+
+          default:
+            decoder.skipType(tag & 7);
+            break;
+        }
+      }
+      return obj;
+    } // decode MultisigReceivedAmount
+
+    public size(): u32 {
+      let size: u32 = 0;
+
+      size +=
+        this.senderAddress.length > 0
+          ? 1 +
+            __proto.Sizer.varint64(this.senderAddress.length) +
+            this.senderAddress.length
+          : 0;
+      size +=
+        this.amount.length > 0
+          ? 1 + __proto.Sizer.varint64(this.amount.length) + this.amount.length
+          : 0;
+
+      return size;
+    }
+
+    // Encodes MultisigReceivedAmount to the ArrayBuffer
+    encode(): ArrayBuffer {
+      return changetype<ArrayBuffer>(
+        StaticArray.fromArray<u8>(this.encodeU8Array())
+      );
+    }
+
+    // Encodes MultisigReceivedAmount to the Array<u8>
+    encodeU8Array(
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
+    ): Array<u8> {
+      const buf = encoder.buf;
+
+      if (this.senderAddress.length > 0) {
+        encoder.uint32(0xa);
+        encoder.uint32(this.senderAddress.length);
+        encoder.bytes(this.senderAddress);
+      }
+      if (this.amount.length > 0) {
+        encoder.uint32(0x12);
+        encoder.uint32(this.amount.length);
+        encoder.bytes(this.amount);
+      }
+
+      return buf;
+    } // encode MultisigReceivedAmount
+  } // MultisigReceivedAmount
+
+  export class MultisigReceivedReceiptItem {
+    public runeId: RuneId = new RuneId();
+    public amounts: Array<MultisigReceivedAmount> =
+      new Array<MultisigReceivedAmount>();
+
+    // Decodes MultisigReceivedReceiptItem from an ArrayBuffer
+    static decode(buf: ArrayBuffer): MultisigReceivedReceiptItem {
+      return MultisigReceivedReceiptItem.decodeDataView(new DataView(buf));
+    }
+
+    // Decodes MultisigReceivedReceiptItem from a DataView
+    static decodeDataView(view: DataView): MultisigReceivedReceiptItem {
+      const decoder = new __proto.Decoder(view);
+      const obj = new MultisigReceivedReceiptItem();
+
+      while (!decoder.eof()) {
+        const tag = decoder.tag();
+        const number = tag >>> 3;
+
+        switch (number) {
+          case 1: {
+            const length = decoder.uint32();
+            obj.runeId = RuneId.decodeDataView(
+              new DataView(
+                decoder.view.buffer,
+                decoder.pos + decoder.view.byteOffset,
+                length
+              )
+            );
+            decoder.skip(length);
+
+            break;
+          }
+          case 2: {
+            const length = decoder.uint32();
+            obj.amounts.push(
+              MultisigReceivedAmount.decodeDataView(
+                new DataView(
+                  decoder.view.buffer,
+                  decoder.pos + decoder.view.byteOffset,
+                  length
+                )
+              )
+            );
+            decoder.skip(length);
+
+            break;
+          }
+
+          default:
+            decoder.skipType(tag & 7);
+            break;
+        }
+      }
+      return obj;
+    } // decode MultisigReceivedReceiptItem
+
+    public size(): u32 {
+      let size: u32 = 0;
+
+      if (this.runeId != null) {
+        const f: RuneId = this.runeId as RuneId;
+        const messageSize = f.size();
+
+        if (messageSize > 0) {
+          size += 1 + __proto.Sizer.varint64(messageSize) + messageSize;
+        }
+      }
+
+      for (let n: i32 = 0; n < this.amounts.length; n++) {
+        const messageSize = this.amounts[n].size();
+
+        if (messageSize > 0) {
+          size += 1 + __proto.Sizer.varint64(messageSize) + messageSize;
+        }
+      }
+
+      return size;
+    }
+
+    // Encodes MultisigReceivedReceiptItem to the ArrayBuffer
+    encode(): ArrayBuffer {
+      return changetype<ArrayBuffer>(
+        StaticArray.fromArray<u8>(this.encodeU8Array())
+      );
+    }
+
+    // Encodes MultisigReceivedReceiptItem to the Array<u8>
+    encodeU8Array(
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
+    ): Array<u8> {
+      const buf = encoder.buf;
+
+      if (this.runeId != null) {
+        const f = this.runeId as RuneId;
+
+        const messageSize = f.size();
+
+        if (messageSize > 0) {
+          encoder.uint32(0xa);
+          encoder.uint32(messageSize);
+          f.encodeU8Array(encoder);
+        }
+      }
+
+      for (let n: i32 = 0; n < this.amounts.length; n++) {
+        const messageSize = this.amounts[n].size();
+
+        if (messageSize > 0) {
+          encoder.uint32(0x12);
+          encoder.uint32(messageSize);
+          this.amounts[n].encodeU8Array(encoder);
+        }
+      }
+
+      return buf;
+    } // encode MultisigReceivedReceiptItem
+  } // MultisigReceivedReceiptItem
+
+  export class MultisigReceivedReceipt {
+    public data: Array<MultisigReceivedReceiptItem> =
+      new Array<MultisigReceivedReceiptItem>();
+
+    // Decodes MultisigReceivedReceipt from an ArrayBuffer
+    static decode(buf: ArrayBuffer): MultisigReceivedReceipt {
+      return MultisigReceivedReceipt.decodeDataView(new DataView(buf));
+    }
+
+    // Decodes MultisigReceivedReceipt from a DataView
+    static decodeDataView(view: DataView): MultisigReceivedReceipt {
+      const decoder = new __proto.Decoder(view);
+      const obj = new MultisigReceivedReceipt();
+
+      while (!decoder.eof()) {
+        const tag = decoder.tag();
+        const number = tag >>> 3;
+
+        switch (number) {
+          case 1: {
+            const length = decoder.uint32();
+            obj.data.push(
+              MultisigReceivedReceiptItem.decodeDataView(
+                new DataView(
+                  decoder.view.buffer,
+                  decoder.pos + decoder.view.byteOffset,
+                  length
+                )
+              )
+            );
+            decoder.skip(length);
+
+            break;
+          }
+
+          default:
+            decoder.skipType(tag & 7);
+            break;
+        }
+      }
+      return obj;
+    } // decode MultisigReceivedReceipt
+
+    public size(): u32 {
+      let size: u32 = 0;
+
+      for (let n: i32 = 0; n < this.data.length; n++) {
+        const messageSize = this.data[n].size();
+
+        if (messageSize > 0) {
+          size += 1 + __proto.Sizer.varint64(messageSize) + messageSize;
+        }
+      }
+
+      return size;
+    }
+
+    // Encodes MultisigReceivedReceipt to the ArrayBuffer
+    encode(): ArrayBuffer {
+      return changetype<ArrayBuffer>(
+        StaticArray.fromArray<u8>(this.encodeU8Array())
+      );
+    }
+
+    // Encodes MultisigReceivedReceipt to the Array<u8>
+    encodeU8Array(
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
+    ): Array<u8> {
+      const buf = encoder.buf;
+
+      for (let n: i32 = 0; n < this.data.length; n++) {
+        const messageSize = this.data[n].size();
+
+        if (messageSize > 0) {
+          encoder.uint32(0xa);
+          encoder.uint32(messageSize);
+          this.data[n].encodeU8Array(encoder);
+        }
+      }
+
+      return buf;
+    } // encode MultisigReceivedReceipt
+  } // MultisigReceivedReceipt
 } // metashrew_runes
