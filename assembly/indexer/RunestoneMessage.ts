@@ -134,11 +134,11 @@ export class RunestoneMessage {
         ) {
           const balanceSheet = changetype<BalanceSheet>(initialBalanceSheetPtr);
           MINTS_REMAINING.select(name).set(
-            toArrayBuffer(remaining - u128.from(1))
+            toArrayBuffer(remaining - u128.from(1)),
           );
           balanceSheet.increase(
             mintTo,
-            fromArrayBuffer(AMOUNT.select(name).get())
+            fromArrayBuffer(AMOUNT.select(name).get()),
           );
           return true;
         }
@@ -158,11 +158,11 @@ export class RunestoneMessage {
     RUNE_ID_TO_HEIGHT.select(runeId).setValue<u32>(<u32>height);
     if (this.fields.has(Field.DIVISIBILITY))
       DIVISIBILITY.select(name).setValue<u8>(
-        fieldTo<u8>(this.fields.get(Field.DIVISIBILITY))
+        fieldTo<u8>(this.fields.get(Field.DIVISIBILITY)),
       );
     if (this.fields.has(Field.PREMINE)) {
       const initialBalanceSheet = changetype<BalanceSheet>(
-        initialBalanceSheetPtr
+        initialBalanceSheetPtr,
       );
       const premine = fieldToU128(this.fields.get(Field.PREMINE));
       BalanceSheet.fromPairs([runeId], [premine]).pipe(initialBalanceSheet);
@@ -171,41 +171,41 @@ export class RunestoneMessage {
     if (this.getFlag(Flag.TERMS)) {
       if (this.fields.has(Field.AMOUNT))
         AMOUNT.select(name).set(
-          toArrayBuffer(fieldToU128(this.fields.get(Field.AMOUNT)))
+          toArrayBuffer(fieldToU128(this.fields.get(Field.AMOUNT))),
         );
 
       if (this.fields.has(Field.CAP)) {
         CAP.select(name).set(
-          toArrayBuffer(fieldToU128(this.fields.get(Field.CAP)))
+          toArrayBuffer(fieldToU128(this.fields.get(Field.CAP))),
         );
         MINTS_REMAINING.select(name).set(
-          fieldToArrayBuffer(this.fields.get(Field.CAP))
+          fieldToArrayBuffer(this.fields.get(Field.CAP)),
         );
       }
       if (this.fields.has(Field.HEIGHTSTART))
         HEIGHTSTART.select(name).setValue<u64>(
-          fieldTo<u64>(this.fields.get(Field.HEIGHTSTART))
+          fieldTo<u64>(this.fields.get(Field.HEIGHTSTART)),
         );
       if (this.fields.has(Field.HEIGHTEND))
         HEIGHTEND.select(name).setValue<u64>(
-          fieldTo<u64>(this.fields.get(Field.HEIGHTEND))
+          fieldTo<u64>(this.fields.get(Field.HEIGHTEND)),
         );
       if (this.fields.has(Field.OFFSETSTART))
         OFFSETSTART.select(name).setValue<u64>(
-          fieldTo<u64>(this.fields.get(Field.OFFSETSTART))
+          fieldTo<u64>(this.fields.get(Field.OFFSETSTART)),
         );
       if (this.fields.has(Field.OFFSETEND))
         OFFSETEND.select(name).setValue<u64>(
-          fieldTo<u64>(this.fields.get(Field.OFFSETEND))
+          fieldTo<u64>(this.fields.get(Field.OFFSETEND)),
         );
     }
     if (this.fields.has(Field.SPACERS))
       SPACERS.select(name).setValue<u32>(
-        fieldTo<u32>(this.fields.get(Field.SPACERS))
+        fieldTo<u32>(this.fields.get(Field.SPACERS)),
       );
     if (this.fields.has(Field.SYMBOL))
       SYMBOL.select(name).setValue<u8>(
-        fieldTo<u8>(this.fields.get(Field.SYMBOL))
+        fieldTo<u8>(this.fields.get(Field.SYMBOL)),
       );
     ETCHINGS.append(name);
     return true;

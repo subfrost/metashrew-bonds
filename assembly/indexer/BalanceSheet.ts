@@ -28,7 +28,7 @@ export class BalanceSheet {
   }
   static fromPairs(
     runes: Array<ArrayBuffer>,
-    balances: Array<u128>
+    balances: Array<u128>,
   ): BalanceSheet {
     const balanceSheet = new BalanceSheet();
     for (let i = 0; i < runes.length; i++) {
@@ -87,7 +87,7 @@ export class BalanceSheet {
       (r: BalanceSheet, v: BalanceSheet, i: i32, ary: Array<BalanceSheet>) => {
         return BalanceSheet.merge(r, v);
       },
-      new BalanceSheet()
+      new BalanceSheet(),
     );
   }
   save(ptr: IndexPointer): void {
@@ -111,7 +111,7 @@ export class BalanceSheet {
     for (let i: u32 = 0; i < length; i++) {
       result.set(
         runesPtr.selectIndex(i).get(),
-        fromArrayBuffer(balancesPtr.selectIndex(i).get())
+        fromArrayBuffer(balancesPtr.selectIndex(i).get()),
       );
     }
     return result;

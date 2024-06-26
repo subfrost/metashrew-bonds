@@ -28,7 +28,7 @@ export function txindexForOutpoint(outpoint: ArrayBuffer): u32 {
   box.len -= 4;
   const txid = box.toArrayBuffer();
   const ptr = HEIGHT_TO_TRANSACTION_IDS.selectValue<u32>(
-    OUTPOINT_TO_HEIGHT.select(outpoint).getValue<u32>()
+    OUTPOINT_TO_HEIGHT.select(outpoint).getValue<u32>(),
   );
   const length = ptr.length();
   for (let i = 0; i < <i32>length; i++) {
@@ -36,7 +36,7 @@ export function txindexForOutpoint(outpoint: ArrayBuffer): u32 {
       memory.compare(
         changetype<usize>(txid),
         changetype<usize>(ptr.selectIndex(i).get()),
-        txid.byteLength
+        txid.byteLength,
       ) === 0
     )
       return i;
@@ -45,7 +45,7 @@ export function txindexForOutpoint(outpoint: ArrayBuffer): u32 {
 }
 
 export function balanceSheetToProtobuf(
-  sheet: BalanceSheet
+  sheet: BalanceSheet,
 ): protobuf.BalanceSheet {
   const runes = sheet.runes.reduce<Array<protobuf.Rune>>((a, d, i, init) => {
     const _runeId = RuneId.fromBytesU128(d);
@@ -58,7 +58,7 @@ export function balanceSheetToProtobuf(
     runeId.txindex = _runeId.tx;
     rune.runeId = runeId;
     rune.name = Uint8Array.wrap(
-      String.UTF8.encode(fieldToName(fromArrayBuffer(name)))
+      String.UTF8.encode(fieldToName(fromArrayBuffer(name))),
     ).reduce<Array<u8>>((a, d) => {
       a.push(d);
       return a;
@@ -83,7 +83,7 @@ export function balanceSheetToProtobuf(
 }
 
 export function outpointBase(
-  inp: protobuf.Outpoint
+  inp: protobuf.Outpoint,
 ): protobuf.OutpointResponse {
   const txid = changetype<Uint8Array>(inp.txid).buffer;
   const pos = inp.vout;
@@ -91,7 +91,7 @@ export function outpointBase(
 
   const op = OUTPOINT_TO_RUNES.select(outpoint);
   const output = new Output(
-    Box.from(OUTPOINT_TO_OUTPUT.select(outpoint).get())
+    Box.from(OUTPOINT_TO_OUTPUT.select(outpoint).get()),
   );
   const balanceSheet = balanceSheetToProtobuf(BalanceSheet.load(op));
 

@@ -38,18 +38,18 @@ export class Index {
   static indexOutpoints(
     tx: RunesTransaction,
     txid: ArrayBuffer,
-    height: u32
+    height: u32,
   ): void {
     for (let i: i32 = 0; i < tx.outs.length; i++) {
       OUTPOINT_TO_HEIGHT.select(
-        OutPoint.from(txid, <u32>i).toArrayBuffer()
+        OutPoint.from(txid, <u32>i).toArrayBuffer(),
       ).setValue<u32>(height);
     }
   }
   static findCommitment(
     tx: RunesTransaction,
     name: ArrayBuffer,
-    height: u32
+    height: u32,
   ): ArrayBuffer {
     for (let i = 0; i < tx.ins.length; i++) {
       const input = tx.ins[i];
@@ -98,9 +98,9 @@ export class Index {
         let balanceSheet = BalanceSheet.concat(
           tx.ins.map<BalanceSheet>((v: Input, i: i32, ary: Array<Input>) =>
             BalanceSheet.load(
-              OUTPOINT_TO_RUNES.select(v.previousOutput().toArrayBuffer())
-            )
-          )
+              OUTPOINT_TO_RUNES.select(v.previousOutput().toArrayBuffer()),
+            ),
+          ),
         );
 
         const balancesByOutput = new Map<u32, BalanceSheet>();
@@ -108,7 +108,7 @@ export class Index {
         const hasEtched = message.etch(
           <u64>height,
           <u32>i,
-          changetype<usize>(balanceSheet)
+          changetype<usize>(balanceSheet),
         );
 
         if (hasMinted || hasEtched) {
@@ -129,7 +129,7 @@ export class Index {
           if (!balancesByOutput.has(edictOutput)) {
             balancesByOutput.set(
               edictOutput,
-              (outputBalanceSheet = new BalanceSheet())
+              (outputBalanceSheet = new BalanceSheet()),
             );
           } else outputBalanceSheet = balancesByOutput.get(edictOutput);
           const amount = min(edict.amount, balanceSheet.get(runeId));
@@ -144,8 +144,8 @@ export class Index {
           const sheet = balancesByOutput.get(runesToOutputs[x]);
           sheet.save(
             OUTPOINT_TO_RUNES.select(
-              OutPoint.from(txid, runesToOutputs[x]).toArrayBuffer()
-            )
+              OutPoint.from(txid, runesToOutputs[x]).toArrayBuffer(),
+            ),
           );
         }
       }
