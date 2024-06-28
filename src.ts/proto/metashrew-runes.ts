@@ -166,9 +166,9 @@ export interface RunesResponse {
     runes: Rune[];
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedAmount
+ * @generated from protobuf message metashrew_runes.AddressReceivedAmount
  */
-export interface MultisigReceivedAmount {
+export interface AddressReceivedAmount {
     /**
      * @generated from protobuf field: bytes senderAddress = 1;
      */
@@ -179,26 +179,39 @@ export interface MultisigReceivedAmount {
     amount: Uint8Array;
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedReceiptItem
+ * @generated from protobuf message metashrew_runes.AddressReceivedReceipt
  */
-export interface MultisigReceivedReceiptItem {
+export interface AddressReceivedReceipt {
     /**
      * @generated from protobuf field: metashrew_runes.RuneId runeId = 1;
      */
     runeId?: RuneId;
     /**
-     * @generated from protobuf field: repeated metashrew_runes.MultisigReceivedAmount amounts = 2;
+     * @generated from protobuf field: repeated metashrew_runes.AddressReceivedAmount amounts = 2;
      */
-    amounts: MultisigReceivedAmount[];
+    amounts: AddressReceivedAmount[];
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedReceipt
+ * @generated from protobuf message metashrew_runes.AddressReceivedRunesRequest
  */
-export interface MultisigReceivedReceipt {
+export interface AddressReceivedRunesRequest {
     /**
-     * @generated from protobuf field: repeated metashrew_runes.MultisigReceivedReceiptItem data = 1;
+     * @generated from protobuf field: uint32 height = 1;
      */
-    data: MultisigReceivedReceiptItem[];
+    height: number;
+    /**
+     * @generated from protobuf field: bytes address = 2;
+     */
+    address: Uint8Array;
+}
+/**
+ * @generated from protobuf message metashrew_runes.AddressReceivedRunesResponse
+ */
+export interface AddressReceivedRunesResponse {
+    /**
+     * @generated from protobuf field: repeated metashrew_runes.AddressReceivedReceipt receipts = 1;
+     */
+    receipts: AddressReceivedReceipt[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class RuneId$Type extends MessageType<RuneId> {
@@ -824,22 +837,22 @@ class RunesResponse$Type extends MessageType<RunesResponse> {
  */
 export const RunesResponse = new RunesResponse$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class MultisigReceivedAmount$Type extends MessageType<MultisigReceivedAmount> {
+class AddressReceivedAmount$Type extends MessageType<AddressReceivedAmount> {
     constructor() {
-        super("metashrew_runes.MultisigReceivedAmount", [
+        super("metashrew_runes.AddressReceivedAmount", [
             { no: 1, name: "senderAddress", kind: "scalar", T: 12 /*ScalarType.BYTES*/ },
             { no: 2, name: "amount", kind: "scalar", T: 12 /*ScalarType.BYTES*/ }
         ]);
     }
-    create(value?: PartialMessage<MultisigReceivedAmount>): MultisigReceivedAmount {
+    create(value?: PartialMessage<AddressReceivedAmount>): AddressReceivedAmount {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.senderAddress = new Uint8Array(0);
         message.amount = new Uint8Array(0);
         if (value !== undefined)
-            reflectionMergePartial<MultisigReceivedAmount>(this, message, value);
+            reflectionMergePartial<AddressReceivedAmount>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedAmount): MultisigReceivedAmount {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedAmount): AddressReceivedAmount {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -861,7 +874,7 @@ class MultisigReceivedAmount$Type extends MessageType<MultisigReceivedAmount> {
         }
         return message;
     }
-    internalBinaryWrite(message: MultisigReceivedAmount, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: AddressReceivedAmount, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* bytes senderAddress = 1; */
         if (message.senderAddress.length)
             writer.tag(1, WireType.LengthDelimited).bytes(message.senderAddress);
@@ -875,25 +888,25 @@ class MultisigReceivedAmount$Type extends MessageType<MultisigReceivedAmount> {
     }
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedAmount
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedAmount
  */
-export const MultisigReceivedAmount = new MultisigReceivedAmount$Type();
+export const AddressReceivedAmount = new AddressReceivedAmount$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class MultisigReceivedReceiptItem$Type extends MessageType<MultisigReceivedReceiptItem> {
+class AddressReceivedReceipt$Type extends MessageType<AddressReceivedReceipt> {
     constructor() {
-        super("metashrew_runes.MultisigReceivedReceiptItem", [
+        super("metashrew_runes.AddressReceivedReceipt", [
             { no: 1, name: "runeId", kind: "message", T: () => RuneId },
-            { no: 2, name: "amounts", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => MultisigReceivedAmount }
+            { no: 2, name: "amounts", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => AddressReceivedAmount }
         ]);
     }
-    create(value?: PartialMessage<MultisigReceivedReceiptItem>): MultisigReceivedReceiptItem {
+    create(value?: PartialMessage<AddressReceivedReceipt>): AddressReceivedReceipt {
         const message = globalThis.Object.create((this.messagePrototype!));
         message.amounts = [];
         if (value !== undefined)
-            reflectionMergePartial<MultisigReceivedReceiptItem>(this, message, value);
+            reflectionMergePartial<AddressReceivedReceipt>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedReceiptItem): MultisigReceivedReceiptItem {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedReceipt): AddressReceivedReceipt {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
@@ -901,8 +914,8 @@ class MultisigReceivedReceiptItem$Type extends MessageType<MultisigReceivedRecei
                 case /* metashrew_runes.RuneId runeId */ 1:
                     message.runeId = RuneId.internalBinaryRead(reader, reader.uint32(), options, message.runeId);
                     break;
-                case /* repeated metashrew_runes.MultisigReceivedAmount amounts */ 2:
-                    message.amounts.push(MultisigReceivedAmount.internalBinaryRead(reader, reader.uint32(), options));
+                case /* repeated metashrew_runes.AddressReceivedAmount amounts */ 2:
+                    message.amounts.push(AddressReceivedAmount.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -915,13 +928,13 @@ class MultisigReceivedReceiptItem$Type extends MessageType<MultisigReceivedRecei
         }
         return message;
     }
-    internalBinaryWrite(message: MultisigReceivedReceiptItem, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+    internalBinaryWrite(message: AddressReceivedReceipt, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
         /* metashrew_runes.RuneId runeId = 1; */
         if (message.runeId)
             RuneId.internalBinaryWrite(message.runeId, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* repeated metashrew_runes.MultisigReceivedAmount amounts = 2; */
+        /* repeated metashrew_runes.AddressReceivedAmount amounts = 2; */
         for (let i = 0; i < message.amounts.length; i++)
-            MultisigReceivedAmount.internalBinaryWrite(message.amounts[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+            AddressReceivedAmount.internalBinaryWrite(message.amounts[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -929,30 +942,35 @@ class MultisigReceivedReceiptItem$Type extends MessageType<MultisigReceivedRecei
     }
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedReceiptItem
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedReceipt
  */
-export const MultisigReceivedReceiptItem = new MultisigReceivedReceiptItem$Type();
+export const AddressReceivedReceipt = new AddressReceivedReceipt$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class MultisigReceivedReceipt$Type extends MessageType<MultisigReceivedReceipt> {
+class AddressReceivedRunesRequest$Type extends MessageType<AddressReceivedRunesRequest> {
     constructor() {
-        super("metashrew_runes.MultisigReceivedReceipt", [
-            { no: 1, name: "data", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => MultisigReceivedReceiptItem }
+        super("metashrew_runes.AddressReceivedRunesRequest", [
+            { no: 1, name: "height", kind: "scalar", T: 13 /*ScalarType.UINT32*/ },
+            { no: 2, name: "address", kind: "scalar", T: 12 /*ScalarType.BYTES*/ }
         ]);
     }
-    create(value?: PartialMessage<MultisigReceivedReceipt>): MultisigReceivedReceipt {
+    create(value?: PartialMessage<AddressReceivedRunesRequest>): AddressReceivedRunesRequest {
         const message = globalThis.Object.create((this.messagePrototype!));
-        message.data = [];
+        message.height = 0;
+        message.address = new Uint8Array(0);
         if (value !== undefined)
-            reflectionMergePartial<MultisigReceivedReceipt>(this, message, value);
+            reflectionMergePartial<AddressReceivedRunesRequest>(this, message, value);
         return message;
     }
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedReceipt): MultisigReceivedReceipt {
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedRunesRequest): AddressReceivedRunesRequest {
         let message = target ?? this.create(), end = reader.pos + length;
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated metashrew_runes.MultisigReceivedReceiptItem data */ 1:
-                    message.data.push(MultisigReceivedReceiptItem.internalBinaryRead(reader, reader.uint32(), options));
+                case /* uint32 height */ 1:
+                    message.height = reader.uint32();
+                    break;
+                case /* bytes address */ 2:
+                    message.address = reader.bytes();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -965,10 +983,13 @@ class MultisigReceivedReceipt$Type extends MessageType<MultisigReceivedReceipt> 
         }
         return message;
     }
-    internalBinaryWrite(message: MultisigReceivedReceipt, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated metashrew_runes.MultisigReceivedReceiptItem data = 1; */
-        for (let i = 0; i < message.data.length; i++)
-            MultisigReceivedReceiptItem.internalBinaryWrite(message.data[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+    internalBinaryWrite(message: AddressReceivedRunesRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* uint32 height = 1; */
+        if (message.height !== 0)
+            writer.tag(1, WireType.Varint).uint32(message.height);
+        /* bytes address = 2; */
+        if (message.address.length)
+            writer.tag(2, WireType.LengthDelimited).bytes(message.address);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -976,6 +997,53 @@ class MultisigReceivedReceipt$Type extends MessageType<MultisigReceivedReceipt> 
     }
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedReceipt
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedRunesRequest
  */
-export const MultisigReceivedReceipt = new MultisigReceivedReceipt$Type();
+export const AddressReceivedRunesRequest = new AddressReceivedRunesRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class AddressReceivedRunesResponse$Type extends MessageType<AddressReceivedRunesResponse> {
+    constructor() {
+        super("metashrew_runes.AddressReceivedRunesResponse", [
+            { no: 1, name: "receipts", kind: "message", repeat: 1 /*RepeatType.PACKED*/, T: () => AddressReceivedReceipt }
+        ]);
+    }
+    create(value?: PartialMessage<AddressReceivedRunesResponse>): AddressReceivedRunesResponse {
+        const message = globalThis.Object.create((this.messagePrototype!));
+        message.receipts = [];
+        if (value !== undefined)
+            reflectionMergePartial<AddressReceivedRunesResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedRunesResponse): AddressReceivedRunesResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* repeated metashrew_runes.AddressReceivedReceipt receipts */ 1:
+                    message.receipts.push(AddressReceivedReceipt.internalBinaryRead(reader, reader.uint32(), options));
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: AddressReceivedRunesResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* repeated metashrew_runes.AddressReceivedReceipt receipts = 1; */
+        for (let i = 0; i < message.receipts.length; i++)
+            AddressReceivedReceipt.internalBinaryWrite(message.receipts[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
+}
+/**
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedRunesResponse
+ */
+export const AddressReceivedRunesResponse = new AddressReceivedRunesResponse$Type();

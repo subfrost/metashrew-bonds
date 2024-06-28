@@ -60,16 +60,21 @@ message RunesResponse {
   repeated Rune runes = 1;
 }
 
-message MultisigReceivedAmount {
+message AddressReceivedAmount {
   bytes senderAddress = 1;
   bytes amount = 2;
 }
 
-message MultisigReceivedReceiptItem {
+message AddressReceivedReceipt {
   RuneId runeId = 1;
-  repeated MultisigReceivedAmount amounts = 2;
+  repeated AddressReceivedAmount amounts = 2;
 }
 
-message MultisigReceivedReceipt {
-  repeated MultisigReceivedReceiptItem data = 1;
+message AddressReceivedRunesRequest {
+  uint32 height = 1;
+  bytes address = 2;
+}
+
+message AddressReceivedRunesResponse {
+  repeated AddressReceivedReceipt receipts = 1;
 }

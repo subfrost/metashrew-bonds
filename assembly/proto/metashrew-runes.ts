@@ -1520,19 +1520,19 @@ export namespace metashrew_runes {
     } // encode RunesResponse
   } // RunesResponse
 
-  export class MultisigReceivedAmount {
+  export class AddressReceivedAmount {
     public senderAddress: Array<u8> = new Array<u8>();
     public amount: Array<u8> = new Array<u8>();
 
-    // Decodes MultisigReceivedAmount from an ArrayBuffer
-    static decode(buf: ArrayBuffer): MultisigReceivedAmount {
-      return MultisigReceivedAmount.decodeDataView(new DataView(buf));
+    // Decodes AddressReceivedAmount from an ArrayBuffer
+    static decode(buf: ArrayBuffer): AddressReceivedAmount {
+      return AddressReceivedAmount.decodeDataView(new DataView(buf));
     }
 
-    // Decodes MultisigReceivedAmount from a DataView
-    static decodeDataView(view: DataView): MultisigReceivedAmount {
+    // Decodes AddressReceivedAmount from a DataView
+    static decodeDataView(view: DataView): AddressReceivedAmount {
       const decoder = new __proto.Decoder(view);
-      const obj = new MultisigReceivedAmount();
+      const obj = new AddressReceivedAmount();
 
       while (!decoder.eof()) {
         const tag = decoder.tag();
@@ -1554,7 +1554,7 @@ export namespace metashrew_runes {
         }
       }
       return obj;
-    } // decode MultisigReceivedAmount
+    } // decode AddressReceivedAmount
 
     public size(): u32 {
       let size: u32 = 0;
@@ -1573,14 +1573,14 @@ export namespace metashrew_runes {
       return size;
     }
 
-    // Encodes MultisigReceivedAmount to the ArrayBuffer
+    // Encodes AddressReceivedAmount to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
         StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
-    // Encodes MultisigReceivedAmount to the Array<u8>
+    // Encodes AddressReceivedAmount to the Array<u8>
     encodeU8Array(
       encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
@@ -1598,23 +1598,23 @@ export namespace metashrew_runes {
       }
 
       return buf;
-    } // encode MultisigReceivedAmount
-  } // MultisigReceivedAmount
+    } // encode AddressReceivedAmount
+  } // AddressReceivedAmount
 
-  export class MultisigReceivedReceiptItem {
+  export class AddressReceivedReceipt {
     public runeId: RuneId = new RuneId();
-    public amounts: Array<MultisigReceivedAmount> =
-      new Array<MultisigReceivedAmount>();
+    public amounts: Array<AddressReceivedAmount> =
+      new Array<AddressReceivedAmount>();
 
-    // Decodes MultisigReceivedReceiptItem from an ArrayBuffer
-    static decode(buf: ArrayBuffer): MultisigReceivedReceiptItem {
-      return MultisigReceivedReceiptItem.decodeDataView(new DataView(buf));
+    // Decodes AddressReceivedReceipt from an ArrayBuffer
+    static decode(buf: ArrayBuffer): AddressReceivedReceipt {
+      return AddressReceivedReceipt.decodeDataView(new DataView(buf));
     }
 
-    // Decodes MultisigReceivedReceiptItem from a DataView
-    static decodeDataView(view: DataView): MultisigReceivedReceiptItem {
+    // Decodes AddressReceivedReceipt from a DataView
+    static decodeDataView(view: DataView): AddressReceivedReceipt {
       const decoder = new __proto.Decoder(view);
-      const obj = new MultisigReceivedReceiptItem();
+      const obj = new AddressReceivedReceipt();
 
       while (!decoder.eof()) {
         const tag = decoder.tag();
@@ -1637,7 +1637,7 @@ export namespace metashrew_runes {
           case 2: {
             const length = decoder.uint32();
             obj.amounts.push(
-              MultisigReceivedAmount.decodeDataView(
+              AddressReceivedAmount.decodeDataView(
                 new DataView(
                   decoder.view.buffer,
                   decoder.pos + decoder.view.byteOffset,
@@ -1656,7 +1656,7 @@ export namespace metashrew_runes {
         }
       }
       return obj;
-    } // decode MultisigReceivedReceiptItem
+    } // decode AddressReceivedReceipt
 
     public size(): u32 {
       let size: u32 = 0;
@@ -1681,14 +1681,14 @@ export namespace metashrew_runes {
       return size;
     }
 
-    // Encodes MultisigReceivedReceiptItem to the ArrayBuffer
+    // Encodes AddressReceivedReceipt to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
         StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
-    // Encodes MultisigReceivedReceiptItem to the Array<u8>
+    // Encodes AddressReceivedReceipt to the Array<u8>
     encodeU8Array(
       encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
@@ -1717,22 +1717,99 @@ export namespace metashrew_runes {
       }
 
       return buf;
-    } // encode MultisigReceivedReceiptItem
-  } // MultisigReceivedReceiptItem
+    } // encode AddressReceivedReceipt
+  } // AddressReceivedReceipt
 
-  export class MultisigReceivedReceipt {
-    public data: Array<MultisigReceivedReceiptItem> =
-      new Array<MultisigReceivedReceiptItem>();
+  export class AddressReceivedRunesRequest {
+    public height: u32;
+    public address: Array<u8> = new Array<u8>();
 
-    // Decodes MultisigReceivedReceipt from an ArrayBuffer
-    static decode(buf: ArrayBuffer): MultisigReceivedReceipt {
-      return MultisigReceivedReceipt.decodeDataView(new DataView(buf));
+    // Decodes AddressReceivedRunesRequest from an ArrayBuffer
+    static decode(buf: ArrayBuffer): AddressReceivedRunesRequest {
+      return AddressReceivedRunesRequest.decodeDataView(new DataView(buf));
     }
 
-    // Decodes MultisigReceivedReceipt from a DataView
-    static decodeDataView(view: DataView): MultisigReceivedReceipt {
+    // Decodes AddressReceivedRunesRequest from a DataView
+    static decodeDataView(view: DataView): AddressReceivedRunesRequest {
       const decoder = new __proto.Decoder(view);
-      const obj = new MultisigReceivedReceipt();
+      const obj = new AddressReceivedRunesRequest();
+
+      while (!decoder.eof()) {
+        const tag = decoder.tag();
+        const number = tag >>> 3;
+
+        switch (number) {
+          case 1: {
+            obj.height = decoder.uint32();
+            break;
+          }
+          case 2: {
+            obj.address = decoder.bytes();
+            break;
+          }
+
+          default:
+            decoder.skipType(tag & 7);
+            break;
+        }
+      }
+      return obj;
+    } // decode AddressReceivedRunesRequest
+
+    public size(): u32 {
+      let size: u32 = 0;
+
+      size += this.height == 0 ? 0 : 1 + __proto.Sizer.uint32(this.height);
+      size +=
+        this.address.length > 0
+          ? 1 +
+            __proto.Sizer.varint64(this.address.length) +
+            this.address.length
+          : 0;
+
+      return size;
+    }
+
+    // Encodes AddressReceivedRunesRequest to the ArrayBuffer
+    encode(): ArrayBuffer {
+      return changetype<ArrayBuffer>(
+        StaticArray.fromArray<u8>(this.encodeU8Array())
+      );
+    }
+
+    // Encodes AddressReceivedRunesRequest to the Array<u8>
+    encodeU8Array(
+      encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
+    ): Array<u8> {
+      const buf = encoder.buf;
+
+      if (this.height != 0) {
+        encoder.uint32(0x8);
+        encoder.uint32(this.height);
+      }
+      if (this.address.length > 0) {
+        encoder.uint32(0x12);
+        encoder.uint32(this.address.length);
+        encoder.bytes(this.address);
+      }
+
+      return buf;
+    } // encode AddressReceivedRunesRequest
+  } // AddressReceivedRunesRequest
+
+  export class AddressReceivedRunesResponse {
+    public receipts: Array<AddressReceivedReceipt> =
+      new Array<AddressReceivedReceipt>();
+
+    // Decodes AddressReceivedRunesResponse from an ArrayBuffer
+    static decode(buf: ArrayBuffer): AddressReceivedRunesResponse {
+      return AddressReceivedRunesResponse.decodeDataView(new DataView(buf));
+    }
+
+    // Decodes AddressReceivedRunesResponse from a DataView
+    static decodeDataView(view: DataView): AddressReceivedRunesResponse {
+      const decoder = new __proto.Decoder(view);
+      const obj = new AddressReceivedRunesResponse();
 
       while (!decoder.eof()) {
         const tag = decoder.tag();
@@ -1741,8 +1818,8 @@ export namespace metashrew_runes {
         switch (number) {
           case 1: {
             const length = decoder.uint32();
-            obj.data.push(
-              MultisigReceivedReceiptItem.decodeDataView(
+            obj.receipts.push(
+              AddressReceivedReceipt.decodeDataView(
                 new DataView(
                   decoder.view.buffer,
                   decoder.pos + decoder.view.byteOffset,
@@ -1761,13 +1838,13 @@ export namespace metashrew_runes {
         }
       }
       return obj;
-    } // decode MultisigReceivedReceipt
+    } // decode AddressReceivedRunesResponse
 
     public size(): u32 {
       let size: u32 = 0;
 
-      for (let n: i32 = 0; n < this.data.length; n++) {
-        const messageSize = this.data[n].size();
+      for (let n: i32 = 0; n < this.receipts.length; n++) {
+        const messageSize = this.receipts[n].size();
 
         if (messageSize > 0) {
           size += 1 + __proto.Sizer.varint64(messageSize) + messageSize;
@@ -1777,30 +1854,30 @@ export namespace metashrew_runes {
       return size;
     }
 
-    // Encodes MultisigReceivedReceipt to the ArrayBuffer
+    // Encodes AddressReceivedRunesResponse to the ArrayBuffer
     encode(): ArrayBuffer {
       return changetype<ArrayBuffer>(
         StaticArray.fromArray<u8>(this.encodeU8Array())
       );
     }
 
-    // Encodes MultisigReceivedReceipt to the Array<u8>
+    // Encodes AddressReceivedRunesResponse to the Array<u8>
     encodeU8Array(
       encoder: __proto.Encoder = new __proto.Encoder(new Array<u8>())
     ): Array<u8> {
       const buf = encoder.buf;
 
-      for (let n: i32 = 0; n < this.data.length; n++) {
-        const messageSize = this.data[n].size();
+      for (let n: i32 = 0; n < this.receipts.length; n++) {
+        const messageSize = this.receipts[n].size();
 
         if (messageSize > 0) {
           encoder.uint32(0xa);
           encoder.uint32(messageSize);
-          this.data[n].encodeU8Array(encoder);
+          this.receipts[n].encodeU8Array(encoder);
         }
       }
 
       return buf;
-    } // encode MultisigReceivedReceipt
-  } // MultisigReceivedReceipt
+    } // encode AddressReceivedRunesResponse
+  } // AddressReceivedRunesResponse
 } // metashrew_runes

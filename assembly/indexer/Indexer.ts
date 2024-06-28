@@ -82,8 +82,8 @@ export class Index {
     HEIGHT_TO_BLOCKHASH.selectValue<u32>(height).set(block.blockhash());
     BLOCKHASH_TO_HEIGHT.select(block.blockhash()).setValue<u32>(height);
     block.saveTransactions(height);
-    const receiptItems: Map<string, protobuf.MultisigReceivedReceiptItem> =
-      new Map<string, protobuf.MultisigReceivedReceiptItem>();
+    const receiptItems: Map<string, protobuf.AddressReceivedReceipt> =
+      new Map<string, protobuf.AddressReceivedReceipt>();
 
     for (let i: i32 = 0; i < block.transactions.length; i++) {
       const tx = block.getTransaction(i);
@@ -180,11 +180,11 @@ export class Index {
 
           // height_to rune --> height --> recv_addr = (runeId, amount, send_addr)
 
-          let receiptItemProto: protobuf.MultisigReceivedReceiptItem;
+          let receiptItemProto: protobuf.AddressReceivedReceipt;
           if (receiptItems.has(recvAddrStr)) {
             receiptItemProto = receiptItems.get(recvAddrStr);
           } else {
-            receiptItemProto = new protobuf.MultisigReceivedReceiptItem();
+            receiptItemProto = new protobuf.AddressReceivedReceipt();
             const runeIdProto = new protobuf.RuneId();
             runeIdProto.height = <u32>runeId.block; // copied from outpoint.ts, is this safe?
             runeIdProto.txindex = runeId.tx;
@@ -193,7 +193,7 @@ export class Index {
             receiptItems.set(recvAddrStr, receiptItemProto);
           }
 
-          const amountProto = new protobuf.MultisigReceivedAmount();
+          const amountProto = new protobuf.AddressReceivedAmount();
           amountProto.senderAddress = changetype<Array<u8>>(
             Uint8Array.wrap(senderAddr),
           );

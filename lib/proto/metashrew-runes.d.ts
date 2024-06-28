@@ -160,9 +160,9 @@ export interface RunesResponse {
     runes: Rune[];
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedAmount
+ * @generated from protobuf message metashrew_runes.AddressReceivedAmount
  */
-export interface MultisigReceivedAmount {
+export interface AddressReceivedAmount {
     /**
      * @generated from protobuf field: bytes senderAddress = 1;
      */
@@ -173,26 +173,39 @@ export interface MultisigReceivedAmount {
     amount: Uint8Array;
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedReceiptItem
+ * @generated from protobuf message metashrew_runes.AddressReceivedReceipt
  */
-export interface MultisigReceivedReceiptItem {
+export interface AddressReceivedReceipt {
     /**
      * @generated from protobuf field: metashrew_runes.RuneId runeId = 1;
      */
     runeId?: RuneId;
     /**
-     * @generated from protobuf field: repeated metashrew_runes.MultisigReceivedAmount amounts = 2;
+     * @generated from protobuf field: repeated metashrew_runes.AddressReceivedAmount amounts = 2;
      */
-    amounts: MultisigReceivedAmount[];
+    amounts: AddressReceivedAmount[];
 }
 /**
- * @generated from protobuf message metashrew_runes.MultisigReceivedReceipt
+ * @generated from protobuf message metashrew_runes.AddressReceivedRunesRequest
  */
-export interface MultisigReceivedReceipt {
+export interface AddressReceivedRunesRequest {
     /**
-     * @generated from protobuf field: repeated metashrew_runes.MultisigReceivedReceiptItem data = 1;
+     * @generated from protobuf field: uint32 height = 1;
      */
-    data: MultisigReceivedReceiptItem[];
+    height: number;
+    /**
+     * @generated from protobuf field: bytes address = 2;
+     */
+    address: Uint8Array;
+}
+/**
+ * @generated from protobuf message metashrew_runes.AddressReceivedRunesResponse
+ */
+export interface AddressReceivedRunesResponse {
+    /**
+     * @generated from protobuf field: repeated metashrew_runes.AddressReceivedReceipt receipts = 1;
+     */
+    receipts: AddressReceivedReceipt[];
 }
 declare class RuneId$Type extends MessageType<RuneId> {
     constructor();
@@ -304,34 +317,44 @@ declare class RunesResponse$Type extends MessageType<RunesResponse> {
  * @generated MessageType for protobuf message metashrew_runes.RunesResponse
  */
 export declare const RunesResponse: RunesResponse$Type;
-declare class MultisigReceivedAmount$Type extends MessageType<MultisigReceivedAmount> {
+declare class AddressReceivedAmount$Type extends MessageType<AddressReceivedAmount> {
     constructor();
-    create(value?: PartialMessage<MultisigReceivedAmount>): MultisigReceivedAmount;
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedAmount): MultisigReceivedAmount;
-    internalBinaryWrite(message: MultisigReceivedAmount, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
+    create(value?: PartialMessage<AddressReceivedAmount>): AddressReceivedAmount;
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedAmount): AddressReceivedAmount;
+    internalBinaryWrite(message: AddressReceivedAmount, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedAmount
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedAmount
  */
-export declare const MultisigReceivedAmount: MultisigReceivedAmount$Type;
-declare class MultisigReceivedReceiptItem$Type extends MessageType<MultisigReceivedReceiptItem> {
+export declare const AddressReceivedAmount: AddressReceivedAmount$Type;
+declare class AddressReceivedReceipt$Type extends MessageType<AddressReceivedReceipt> {
     constructor();
-    create(value?: PartialMessage<MultisigReceivedReceiptItem>): MultisigReceivedReceiptItem;
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedReceiptItem): MultisigReceivedReceiptItem;
-    internalBinaryWrite(message: MultisigReceivedReceiptItem, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
+    create(value?: PartialMessage<AddressReceivedReceipt>): AddressReceivedReceipt;
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedReceipt): AddressReceivedReceipt;
+    internalBinaryWrite(message: AddressReceivedReceipt, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedReceiptItem
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedReceipt
  */
-export declare const MultisigReceivedReceiptItem: MultisigReceivedReceiptItem$Type;
-declare class MultisigReceivedReceipt$Type extends MessageType<MultisigReceivedReceipt> {
+export declare const AddressReceivedReceipt: AddressReceivedReceipt$Type;
+declare class AddressReceivedRunesRequest$Type extends MessageType<AddressReceivedRunesRequest> {
     constructor();
-    create(value?: PartialMessage<MultisigReceivedReceipt>): MultisigReceivedReceipt;
-    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: MultisigReceivedReceipt): MultisigReceivedReceipt;
-    internalBinaryWrite(message: MultisigReceivedReceipt, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
+    create(value?: PartialMessage<AddressReceivedRunesRequest>): AddressReceivedRunesRequest;
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedRunesRequest): AddressReceivedRunesRequest;
+    internalBinaryWrite(message: AddressReceivedRunesRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
 }
 /**
- * @generated MessageType for protobuf message metashrew_runes.MultisigReceivedReceipt
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedRunesRequest
  */
-export declare const MultisigReceivedReceipt: MultisigReceivedReceipt$Type;
+export declare const AddressReceivedRunesRequest: AddressReceivedRunesRequest$Type;
+declare class AddressReceivedRunesResponse$Type extends MessageType<AddressReceivedRunesResponse> {
+    constructor();
+    create(value?: PartialMessage<AddressReceivedRunesResponse>): AddressReceivedRunesResponse;
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: AddressReceivedRunesResponse): AddressReceivedRunesResponse;
+    internalBinaryWrite(message: AddressReceivedRunesResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter;
+}
+/**
+ * @generated MessageType for protobuf message metashrew_runes.AddressReceivedRunesResponse
+ */
+export declare const AddressReceivedRunesResponse: AddressReceivedRunesResponse$Type;
 export {};
